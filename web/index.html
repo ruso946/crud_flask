@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Actividad Integradora</title>
+    <!-- Bootstrap CSS -->
+    <link   href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css"
+            rel="stylesheet"
+            integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU"
+            crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"      integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+            crossorigin="anonymous"></script>
+    
+            <!-- VUE -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <script src="main.js"></script>
+    
+    
+</head>
+<body class="d-flex flex-column min-vh-100">
+    <div class="container-fluid">
+        <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+            <div class="container-fluid">
+              
+              <img src=".\imagenes\codoacodo.png" alt="codo a codo" style="width:100px;" class="rounded-pill"> 
+              
+              <a class="navbar-brand text-start" href="#">Agenda de Consultorio - gestión de pacientes</a>
+              
+              <ul class="navbar-nav">
+                <li class="nav-item">
+                  <a class="nav-link active" href="create.html">Alta Pacientes</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">Editar Pacientes</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">Baja pacientes</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link disabled" href="#">Acerca de</a>
+                </li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+    
+    <div class="container-fluid">
+        <div class="card img-fluid" style="width:100%">
+          <!--<img class="card-img-top" src=".\imagenes\agenda fondo.jpg" alt="fondo agenda" style="width:100%">-->
+            <div class="card-img-overlay text-start text-light">
+                <!-- <a href="#" class="btn btn-success">Iniciar</a> -->
+              <div class="container" id="app">
+              <h1>Pacientes</h1>
+              <section v-if="errored">
+               <p>Lo sentimos, no es posible obtener la información en este momento, por favor intente nuevamente mas tarde</p>
+              </section>
+              <section v-else>
+                  <div v-if="loading">Cargando....
+                      <div class="spinner-border" role="status">
+                          <span class="sr-only"></span>
+                      </div>
+                  </div>
+                  <div v-else>
+                      <a href="create.html" class="btn btn-success">Alta de Paciente</a>
+                      <br><br>
+                      <table class="table table-striped table-responsive">
+                          <tr>
+                              <th>Id</th>
+                              <th>Nombre</th>
+                              <th>Apellido</th>
+                              <th>dni</th>
+                              
+                          </tr>
+                          <tr v-for="paciente in pacientes">
+                              <td>{{paciente.id}}</td>
+                              <td>{{paciente.nombre}}</td>
+                              <td>{{paciente.apellido}}</td>
+                              <td>{{paciente.dni}}</td>
+                              <td>
+                                  <a :href="'update.html?id='+paciente.id+'&nombre='+paciente.nombre+'&apellido='+paciente.apellido+'&dni='+paciente.dni" class="btn btn-primary">Modificar</a>
+                                  <button v-on:click="eliminar(paciente.id)" class="btn btn-danger">Eliminar</button>
+                              </td>
+                          </tr>
+                      </table>
+              </section>
+          </div>
+        </div>
+        </div>
+    </div>
+    
+    
+    <!-- Un footer con un navbar-->
+
+    <footer class="mt-auto">
+      <nav class="navbar navbar-expand-sm bg-dark navbar-dark justify-content-center p-2">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+            <a class="nav-link mx-5" href="#">Preguntas<br>Frecuentes</a>
+            </li>
+            <li class="nav-item">
+            <a class="nav-link mx-5" href="#">Contáctanos</a>
+            </li>
+            <li class="nav-item">
+            <a class="nav-link mx-5" href="#">Términos y<br>condiciones</a>
+            </li>
+            <li class="nav-item">
+            <a class="nav-link mx-5" href="#">Privacidad</a>
+            </li>
+            
+        </ul>
+      </nav>
+    </footer>
+    
+                <!-- VUE -->
+                <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+                <script src="main.js"></script>
+                <script src=".\js\create.js"></script>
+                <script src=".\js\update.js"></script>
+</body>
+</html>
