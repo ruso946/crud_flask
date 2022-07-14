@@ -22,7 +22,7 @@ function modificar() {
             apellido: a,
             dni: d
         }
-        let url = "http://localhost:5000/pacientes/"+id
+        let url = "'https://crud-flaskk.herokuapp.com/'"+id
         var options = {
             body: JSON.stringify(paciente),
             method: 'PUT',

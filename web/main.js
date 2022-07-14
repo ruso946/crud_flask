@@ -7,7 +7,8 @@ if (document.getElementById("app")) {
             loading: true
         },
         created() {
-            var url = 'http://localhost:5000/pacientes'
+            /*var url = 'http://localhost:5000/pacientes'*/
+            var url = 'https://crud-flaskk.herokuapp.com/'
             this.fetchData(url)
         },
         methods: {
@@ -23,7 +24,7 @@ if (document.getElementById("app")) {
                     })
             },
             eliminar(paciente) {
-                const url = 'http://localhost:5000/pacientes/' + paciente;
+                const url = 'https://crud-flaskk.herokuapp.com/' + paciente;
                 var options = {
                     method: 'DELETE',
                 }

@@ -9,7 +9,7 @@ function guardar() {
         apellido: a,
         dni: d
     }
-    let url = "http://localhost:5000/pacientes"
+    let url = "'https://crud-flaskk.herokuapp.com/'"
     var options = {
         body: JSON.stringify(paciente),
         method: 'POST',
